@@ -6,10 +6,9 @@ import plotly.graph_objects as go
 
 def choloroplethVisualization(data:pd.DataFrame) :
     try:
-        gdf = gpd.read_file(st.secrets['geojson'])
+        geodata = gpd.read_file(st.secrets['geojson'])
     except Exception as e:
         st.error(f"An error occurred while loading the GeoJSON file: {e}")
-    geodata = gpd.read_file('indonesia-gdf-dissolve.geojson')
     regional_data = data.groupby(["REGION",'region_id']).count().reset_index()
     regional_data['total_project'] = regional_data['NE']
     fig = px.choropleth(regional_data, locations = 'region_id',geojson = geodata, color = 'total_project', color_continuous_scale="peach")
