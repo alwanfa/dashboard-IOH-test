@@ -6,7 +6,7 @@ import plotly.graph_objects as go
 
 def choloroplethVisualization(data:pd.DataFrame) :
     try:
-        gdf = gpd.read_file("indonesia-gdf-dissolve.geojson")
+        geodata = gpd.read_file("indonesia-gdf-dissolve.geojson")
     except Exception as e:
         st.error(f"An error occurred while loading the GeoJSON file: {e}")
     regional_data = data.groupby(["REGION",'region_id']).count().reset_index()
