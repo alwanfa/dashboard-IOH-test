@@ -1,9 +1,14 @@
 import pandas as pd
 import geopandas as gpd
 import plotly.express as px
+import streamlit as st
 import plotly.graph_objects as go
 
 def choloroplethVisualization(data:pd.DataFrame) :
+    try:
+        gdf = gpd.read_file("indonesia-gdf-dissolve.geojson")
+    except Exception as e:
+        st.error(f"An error occurred while loading the GeoJSON file: {e}")
     geodata = gpd.read_file('indonesia-gdf-dissolve.geojson')
     regional_data = data.groupby(["REGION",'region_id']).count().reset_index()
     regional_data['total_project'] = regional_data['NE']
