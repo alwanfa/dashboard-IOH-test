@@ -4,7 +4,7 @@ import plotly.express as px
 import plotly.graph_objects as go
 
 def choloroplethVisualization(data:pd.DataFrame) :
-    geodata = gpd.read_file('data/indonesia-gdf-dissolve.geojson')
+    geodata = gpd.read_file('indonesia-gdf-dissolve.geojson')
     regional_data = data.groupby(["REGION",'region_id']).count().reset_index()
     regional_data['total_project'] = regional_data['NE']
     fig = px.choropleth(regional_data, locations = 'region_id',geojson = geodata, color = 'total_project', color_continuous_scale="peach")
