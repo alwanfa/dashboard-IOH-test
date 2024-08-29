@@ -9,7 +9,7 @@ st.set_page_config(
     layout = 'wide'
 
 )
-data = pd.read_csv("test_case.csv")
+data = pd.read_csv(st.secrets['src-data'])
 
 # print(data)
 
