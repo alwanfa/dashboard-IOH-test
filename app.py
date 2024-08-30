@@ -66,8 +66,8 @@ c1[0].plotly_chart(chloropleth)
 c1[1].subheader('Perbandingan Plan dan Actual Project (Bar Chart)')
 c1[1].plotly_chart(implement_project)
 
-vendor_data = getDataByVendor(data)
-delivery_plan_data = getDeliveryPlanData(data)
+vendor_data = getDataByVendor(data_selection)
+delivery_plan_data = getDeliveryPlanData(data_selection)
 
 c2 = st.columns(2)
 c1[0].subheader('Data Project Berdasarkan Vendor')
